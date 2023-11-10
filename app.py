@@ -92,6 +92,7 @@ def login():
     
     return jsonify({"msg": "Bad username or password"}), 401
 
+# Shortens URL ensuring only valid URLs are provided
 @app.route('/shorten', methods=['POST'])
 @jwt_required()
 def shorten():
