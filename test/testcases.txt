@@ -1,0 +1,45 @@
+###Test Cases###
+###Make sure you update the port to use whichever port you bind when starting the container###
+###Start docker container: 'docker run -p 5001:5000 uri-shortener'
+
+Register a User:
+curl -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d '{"username":"testuser", "password":"testpass"}'
+
+Login a User:
+After registration, you can log in to get the JWT token.
+
+curl -X POST http://127.0.0.1:5000/login -H "Content-Type: application/json" -d '{"username":"testuser", "password":"testpass"}'
+You should receive a JWT token in the response. Copy this token for the next steps.
+
+Shorten a URL:
+Use the token you received from the login step to authenticate the request.
+
+curl -X POST http://127.0.0.1:5000/shorten -H "Content-Type: application/json" -H "Authorization: Bearer <Your_JWT_Token>" -d '{"url":"http://example.com"}'
+Replace <Your_JWT_Token> with the actual token you received.
+
+
+###URL with Unsupported Scheme:###
+A URL with a scheme other than http or https, such as ftp://example.com or javascript:alert('Test'), should be rejected.
+
+Example:
+
+curl -X POST http://127.0.0.1:5000/shorten -H "Content-Type: application/json" -H "Authorization: Bearer <Your_JWT_Token>" -d '{"url":"javascript:alert(\'Test\')"}'
+URL without Scheme:
+A URL missing the scheme part (like http:// or https://) should be invalid.
+
+Example:
+
+curl -X POST http://127.0.0.1:5000/shorten -H "Content-Type: application/json" -H "Authorization: Bearer <Your_JWT_Token>" -d '{"url":"www.example.com"}'
+URL with Invalid Format:
+A string that doesn't follow URL formatting rules, such as not_a_real_url, should be rejected.
+
+Example:
+
+curl -X POST http://127.0.0.1:5000/shorten -H "Content-Type: application/json" -H "Authorization: Bearer <Your_JWT_Token>" -d '{"url":"not_a_real_url"}'
+URL with Missing Components:
+A URL that lacks essential components, like a domain, should be invalid.
+
+Example:
+
+curl -X POST http://127.0.0.1:5000/shorten -H "Content-Type: application/json" -H "Authorization: Bearer <Your_JWT_Token>" -d '{"url":"http:///path"}'
+
