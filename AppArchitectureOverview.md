@@ -16,8 +16,14 @@
    - **Description:** Security measures include password hashing for secure password storage, rate limiting to prevent abuse of the APIs, and JWT for secure and scalable user authentication.
 
 4. **API and Functionality:**
-   - **Endpoints:** Based on the contents of the file, various API endpoints would be defined for different functionalities.
-   - **Main Functionalities:** The application might include functionalities related to user authentication, data processing, and interactions with the SQLite database.
+   - **Endpoints:** Endpoint Description
+- **/register/** This endpoint should accept a username and password and create a new user
+- **/login/** This endpoint should allow a user to exchange their credentials for an API key
+- **/logout/** This endpoint should expire the API key
+- **/shorten/** This endpoint should shorten a URI and accept an optional TTL
+- **/x/{...}** This endpoint should expand a shortcode by serving a redirect to the original URI
+  
+- **Main Functionalities:** The application might include functionalities related to user authentication, data processing, and interactions with the SQLite database.
 
 5. **Configuration:**
    - **Configuration Management:** Managed within the application, likely through Flask's app.config.
