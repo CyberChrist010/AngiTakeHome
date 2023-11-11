@@ -1,0 +1,40 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: urishorteners.mycompany.com
+spec:
+  group: mycompany.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                replicaCount:
+                  type: integer
+                resources:
+                  type: object
+                  properties:
+                    limits:
+                      type: object
+                    requests:
+                      type: object
+                image:
+                  type: string
+                shortCodes:
+                  type: array
+                  items:
+                    type: string
+  scope: Namespaced
+  names:
+    plural: urishorteners
+    singular: urishortener
+    kind: UriShortener
+    shortNames:
+      - us
+
