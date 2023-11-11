@@ -1,7 +1,7 @@
 # URI Shortener Application
 
 ## Overview
-This document provides detailed instructions for setting up, testing, and deploying the URI Shortener application. The application is containerized using Docker and orchestrated with Docker swarm, with support for Kubernetes for a robust and scalable deployment.
+This document provides detailed instructions for setting up, testing, and deploying the URI Shortener application. The application is containerized using Docker and orchestrated with Docker swarm, with support for Kubernetes for a robust and scalable deployment. ***NOTE: Self Signed cert used for Testing purposes ONLY. If this is deployed to Production, a secure secret store is REQUIRED.***
 
 ## Prerequisites
 - Docker
