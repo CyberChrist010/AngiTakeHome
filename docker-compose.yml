@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: uri-shortener  # Docker image
+    ports:
+      - "5001:5000"  # Maps port 5000 of the container to port 5001 on the host
+    volumes:
+      - .:/app  # Mounts the current directory into /app in the container
+      - /Users/madoshi/uri-shortener/cert.pem:/app/cert.pem  # Mount cert.pem
+      - /Users/madoshi/uri-shortener/newkey.pem:/app/newkey.pem    # Mount key.pem
+

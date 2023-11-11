@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: uri-shortener-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /  # Define the path and backend service
+        pathType: Prefix
+        backend:
+          service:
+            name: uri-shortener-service
+            port:
+              number: 80
+
