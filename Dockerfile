@@ -10,6 +10,10 @@ RUN apt-get update && \
 # Copy requirements file and the rest of your application
 COPY . .
 
+#Switching user from root
+RUN useradd -m appuser
+USER appuser
+
 # Install dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt --break-system-package
 
